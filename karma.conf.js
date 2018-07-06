@@ -5,8 +5,9 @@ module.exports = function(config) {
     frameworks: ['jasmine', 'browserify'],
     files: [
       'c3.css',
-      'spec/*-helper.js',
-      'spec/*.js'
+      process.env.BUILD ? 'spec/c3-helper.built.js' : process.env.BUNDLE ? 'spec/c3-helper.bundle.js' : 'spec/c3-helper.js',
+      'spec/svg-helper.js',
+      'spec/*-spec.js'
     ],
     preprocessors: {
       'spec/*.js': ['browserify']
